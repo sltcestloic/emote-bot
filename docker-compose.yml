@@ -1,0 +1,9 @@
+version: '3'
+services:
+  emote-bot-daemon:
+     build: .
+     command: npm start
+     volumes:
+       - .:/usr/app
+       - /usr/app/node_modules
+     restart: always
