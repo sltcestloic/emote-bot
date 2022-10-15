@@ -1,3 +1,5 @@
+const { updateEmojis } = require('../../index')
+
 module.exports = {
     name: 'ready',
     once: true,
