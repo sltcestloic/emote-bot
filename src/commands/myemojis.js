@@ -15,7 +15,8 @@ module.exports = {
         })
         var reply = 'Tes emojis: \n\n';
         userEmojis.forEach(emoji => reply += emoji.toString() + ' ')
-        if (reply.length > 2000) reply = reply.substring(0, 2000);
+        if (reply.length > 2000) reply = reply.substring(0, 2000); // should never be the case
+        if (userEmojis.length == 0) reply = 'Tu n\'as créé aucun emoji'
         interaction.reply({
             content: reply,
             ephemeral: true
