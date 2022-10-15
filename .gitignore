@@ -1,3 +1,1 @@
-bot-config.json
-bot-config.dev.json
-node_modules
+postgres-data/
