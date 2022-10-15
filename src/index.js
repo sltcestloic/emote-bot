@@ -21,7 +21,7 @@ const { token } = isDevMode ? require('../config/bot-config.dev.json') : require
 
 client.login(token)
 
-var emojis = [];
+// ============================================================
 
 async function getEmojis(author) {
     const ret = await prisma.emojis.findMany({
@@ -48,19 +48,13 @@ async function addEmoji(author, name) {
 }
 
 async function removeEmoji(name) {
-
+    const ret = await prisma.emojis.delete({
+        where: { name }
+    })
+    return ret;
 }
 
 
-// ============================================================
 
-async function updateEmojis(guild) {
-    const emojiCache = guild.emojis.cache;
-    for (var i = 0; i < emojiCache.size; i++) 
-    emojiCache.at(i).author = await emojiCache.at(i).fetchAuthor();
-    emojis = [];
-    emojiCache.forEach(emoji => emojis[emojis.length] = emoji);
-    console.log(emojis);
-}
 
 module.exports = { getEmoji, getEmojis, addEmoji, removeEmoji };
