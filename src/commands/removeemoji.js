@@ -12,7 +12,6 @@ module.exports = {
             type: 3
         }
     ],
-    default_member_permissions: (1 << 3),
     async run (_client, interaction) {
         const name = interaction.options.getString('name');
 

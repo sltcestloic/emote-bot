@@ -3,7 +3,6 @@ const index = require('../index')
 module.exports = {
     name: 'myemojis',
     description: `Voir les emojis que tu as ajouté`,
-    default_member_permissions: (1 << 3),
     async run (_client, interaction) {
         const emojis = await index.getEmojis(interaction.user.id);
         const userEmojis = [];
