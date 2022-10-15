@@ -20,13 +20,6 @@ module.exports = {
     async run (_client, interaction) {
         const name = interaction.options.getString('name');
         const url = interaction.options.getString('url');
-        if ((!url.startsWith('http://') && !url.startsWith('https://'))) {
-            interaction.reply({
-                content: 'URL invalide',
-                ephemeral: true
-            })
-            return;
-        }
         const userEmojis = await index.getEmojis(interaction.user.id);
         if (userEmojis.length > 4) {
             interaction.reply({
