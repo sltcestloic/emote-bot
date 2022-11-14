@@ -14,9 +14,8 @@ module.exports = {
     ],
     async run (_client, interaction) {
         const name = interaction.options.getString('name');
-
         const emoji = await index.getEmoji(name);
-
+        
         if (!emoji) {
             interaction.reply({
                 content: 'Cet emoji n\'existe pas',
@@ -31,10 +30,19 @@ module.exports = {
             })
             return;
         }
+        
         await index.removeEmoji(name);
-        interaction.reply({
-            content: 'L\'emoji ' + name + ' a bien été supprimé',
-            ephemeral: true
-        })
+        const del = await interaction.guild.emojis.delete(serverEmoji.at(0)).catch(console.error);
+
+        if (del)
+            interaction.reply({
+                content: 'L\'emoji ' + name + ' a bien été supprimé',
+                ephemeral: true
+            })
+        else
+            interaction.reply({
+                content: 'Cet emoji n\'existe pas',
+                ephemeral: true
+            })
     }
 }
