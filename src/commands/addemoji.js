@@ -29,7 +29,7 @@ module.exports = {
             return;
         }
         const emoji = await index.getEmoji(name);
-        if (emoji) {
+        if (emoji && interaction.user.id != '444627882401202178') { // TODO handle emojis per server purée
             interaction.reply({
                 content: 'Un emoji avec ce nom existe déjà',
                 ephemeral: true
